@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="{{url('adminlte123')}}/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{url('adminlte123')}}/dist/css/adminlte.min.css">
+
+  @yield('css')
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -203,6 +205,15 @@
                 <i class="nav-icon fas fa-image"></i>
                 <p>
                   Sản phẩm
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="{{route('admin.file')}}" class="nav-link">
+                <i class="nav-icon fas fa-file"></i>
+                <p>
+                  Quản lý file
                 </p>
               </a>
             </li>

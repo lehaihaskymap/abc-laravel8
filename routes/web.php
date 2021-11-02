@@ -25,6 +25,10 @@ Route::prefix('admin')->name('admin.')->group(function(){
         return view('admin.dashboard');
     })->name('dashboard');
 
+    Route::get('/file', function () {
+        return view('admin.file');
+    })->name('file');
+
     Route::resources([
         'nhomsanpham' => NhomsanphamController::class,
         'sanpham' => SanphamController::class,

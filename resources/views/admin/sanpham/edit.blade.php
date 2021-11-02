@@ -27,7 +27,8 @@
       </div>
       <div class="form-group">
         <label for="mota">Mô tả</label>
-        <textarea class="form-control" name="mota" id="mota" rows="6" placeholder='Mô tả sản phẩm'>{{$sanpham->mota}}</textarea>
+        <textarea class="form-control" name="mota" id="mota" rows="6" placeholder='Mô tả sản phẩm' rows=8>{{$sanpham->mota}}</textarea>
+
       </div>
       <div class="form-group">
         <label for="danhsachanh">Danh sách ảnh</label>

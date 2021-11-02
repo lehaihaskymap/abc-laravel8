@@ -46,7 +46,7 @@ class SanphamController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'ten'=>'required|unique:nhomsanpham,ten',
+            'ten'=>'required|unique:sanpham',
             'gia'=>'required',
             'uutien'=>'required',
         ],
