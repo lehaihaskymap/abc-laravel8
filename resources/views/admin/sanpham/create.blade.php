@@ -30,12 +30,12 @@
         <!-- <input type="text" class="form-control" name="danhsachanh" id="danhsachanh" aria-describedby="helpId"
           placeholder="Danh sách ảnh"> -->
 
-        <input type="text" id="danhsachanh" name="danhsachanh">
+        <input type="hidden" id="danhsachanh" name="danhsachanh">
 
         <div class="row" id="show_danhsachanh">
         </div>
       </div>
-      <button type="submit" class="btn btn-primary">Thêm mới</button>
+
     </div>
     <div class="col-md-4">
       <div class="form-group">
@@ -80,6 +80,7 @@
         @enderror
       </div>
 
+      <button type="submit" class="btn btn-primary">Thêm mới</button>
     </div>
   </div>
 </form>
