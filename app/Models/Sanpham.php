@@ -9,5 +9,5 @@ class Sanpham extends Model
 {
     use HasFactory;
     protected $table='sanpham';
-    protected $fillable=['ten','mota','gia','giaban','anh','danhsachanh','trangthai','uutien'];
+    protected $fillable=['ten','mota','gia','giaban','anh','danhsachanh','trangthai','uutien','nhomsanphamid'];
 }

@@ -199,7 +199,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="{{route('admin.sanpham.index')}}" class="nav-link">
                 <i class="nav-icon fas fa-image"></i>
                 <p>
                   Sản phẩm

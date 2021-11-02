@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\NhomsanphamController;
+use App\Http\Controllers\SanphamController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
 
     Route::resources([
         'nhomsanpham' => NhomsanphamController::class,
+        'sanpham' => SanphamController::class,
     ]);
 
 });

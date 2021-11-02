@@ -78,7 +78,7 @@ class NhomsanphamController extends Controller
      */
     public function edit(Nhomsanpham $nhomsanpham)
     {
-        //
+        return view('admin.nhomsanpham.edit',["nhomsanpham"=>$nhomsanpham]);
     }
 
     /**
@@ -90,7 +90,21 @@ class NhomsanphamController extends Controller
      */
     public function update(Request $request, Nhomsanpham $nhomsanpham)
     {
-        //
+        $request->validate([
+            'ten'=>'required|unique:nhomsanpham,ten,'.$nhomsanpham->id,
+            'uutien'=>'required',
+        ],
+        [
+            'ten.required' => 'Cần nhập tên nhóm sản phẩm',
+            'ten.unique' => 'Tên nhóm sản phẩm cần duy nhất',
+            'uutien.required' => "Cần nhập mức độ ưu tiên",
+
+        ]
+        );
+
+        if ($nhomsanpham->update($request->all())){
+            return redirect()->route('admin.nhomsanpham.index')->with('success','Thêm mới thành công.');
+        }
     }
 
     /**

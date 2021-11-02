@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title','Nhóm sản phẩm')
+@section('title','Sản phẩm')
 
 @section('content')
     <div class="row my-2">
@@ -13,7 +13,7 @@
             </form>
         </div>
         <div class="col-md-4 text-right">
-            <a class="btn btn-primary" href="{{route('admin.nhomsanpham.create')}}" role="button">Thêm mới</a>
+            <a class="btn btn-primary" href="{{route('admin.sanpham.create')}}" role="button">Thêm mới</a>
         </div>
     </div>
 
@@ -22,7 +22,8 @@
             <tr>
                 <th>ID</th>
                 <th>Tên</th>
-                <th>Số sản phẩm</th>
+                <th>Giá</th>
+                <th>Giá bán</th>
                 <th>Trạng thái</th>
                 <th>Mức ưu tiên</th>
                 <th class='text-right'>Hành động</th>
@@ -33,7 +34,8 @@
             <tr>
                 <td scope="row">{{$d->id}}</td>
                 <td>{{$d->ten}}</td>
-                <td>{{$d->sanphams()->count()}}</td>
+                <td>{{$d->gia}}</td>
+                <td>{{$d->giaban}}</td>
                 <td>
                     @if ($d->trangthai==1)
                         <span class="badge badge-primary">Hoạt động</span>
@@ -43,8 +45,8 @@
                 </td>
                 <td>{{$d->uutien}}</td>
                 <td class="text-right">
-                    <a name="" id="" class="btn btn-sm btn-primary" href="{{route('admin.nhomsanpham.edit', $d->id)}}" role="button"><i class="fa fa-edit"></i></a>
-                    <a name="" id="" class="btn btn-sm btn-danger btndelete" href="{{route('admin.nhomsanpham.destroy',$d->id)}}" role="button"><i class="fa fa-trash"></i> </a>
+                    <a name="" id="" class="btn btn-sm btn-primary" href="{{route('admin.sanpham.edit', $d->id)}}" role="button"><i class="fa fa-edit"></i></a>
+                    <a name="" id="" class="btn btn-sm btn-danger btndelete" href="{{route('admin.sanpham.destroy',$d->id)}}" role="button"><i class="fa fa-trash"></i> </a>
                 </td>
             </tr>
             @endforeach
