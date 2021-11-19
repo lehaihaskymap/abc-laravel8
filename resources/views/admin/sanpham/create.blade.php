@@ -135,8 +135,11 @@ $(function() {
 
 $("#model_list").on('hidden.bs.modal', event => {
   var _links = $('input#danhsachanh').val();
-  var _image_list = JSON.parse(_links);
-
+  try {
+    var _image_list = JSON.parse(_links);
+  } catch (error) {
+    var _image_list = [_links];
+  }
   var _html = '';
   for (let i in _image_list) {
     let _img = "{{url('thumbs')}}" + '/' + _image_list[i];

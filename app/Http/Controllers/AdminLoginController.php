@@ -28,17 +28,21 @@ class AdminLoginController extends Controller
             'password' => $request->txtPassword,
         ];
 
-        if (Auth::attempt($login)){
-            return redirect()->route('admin.dashboard');
+        if (Auth::attempt($login,$request->chkRemember)){
+            $request->session()->regenerate();
+
+            return redirect()->intended(route('admin.dashboard'));
         }
         else{
-            redirect()->back()->with('status', 'Email hay Password không chính xác');
+            return back()->withErrors(['message'=> 'Email hay Password không chính xác']);
         }
     }
     public function getlogout(Request $request)
     {
+        Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
         return redirect()->route('admin.getlogin');
     }
 }

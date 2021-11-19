@@ -18,9 +18,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/admin/login', [AdminLoginController::class,'getlogin'])->name('admin.getlogin');
 Route::post('/admin/login', [AdminLoginController::class,'postlogin'])->name('admin.postlogin');
@@ -41,3 +41,16 @@ Route::prefix('admin')->name('admin.')->middleware([CheckAdminLogin::class])->gr
     ]);
 
 });
+
+Route::get('/', function () {
+    return view('site.index');
+})->name('home');
+
+Route::get('/shop', function () {
+    return view('site.shop');
+})->name('shop');
+
+Route::get('/cart', function () {
+    return view('site.cart');
+})->name('cart');
+

@@ -230,7 +230,8 @@ $config = array(
     | default language file name
     |--------------------------------------------------------------------------
     */
-    'default_language' => "vi_VN",
+    // 'default_language' => "vi_VN",
+    'default_language' => "en_EN",
 
     /*
     |--------------------------------------------------------------------------
