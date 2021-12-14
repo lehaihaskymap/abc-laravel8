@@ -173,20 +173,22 @@
         max: maxPrice,
         values: [minPrice, maxPrice],
         slide: function(event, ui) {
-            minamount.val('$' + ui.values[0]);
-            maxamount.val('$' + ui.values[1]);
-            console.log(minamount.val());
-            document.getElementById('minamount').dispatchEvent(new Event('input'));
-            document.getElementById('maxamount').dispatchEvent(new Event('input'));
-            // minamount.trigger('change');
+            minamount.val(ui.values[0]);
+            maxamount.val(ui.values[1]);
+            update_price(minamount.val(), maxamount.val());
+            easyNumberSeparator({
+                selector: '.number-separator',
+                separator: '.'
+            })
         }
     });
-    minamount.val('$' + rangeSlider.slider("values", 0));
-    maxamount.val('$' + rangeSlider.slider("values", 1));
-    // minamount.on("input", function(e) {
-    //     e.preventDefault();
-    //     console.log('change.');
-    // });
+    minamount.val(rangeSlider.slider("values", 0));
+    maxamount.val(rangeSlider.slider("values", 1));
+
+    easyNumberSeparator({
+        selector: '.number-separator',
+        separator: '.'
+    })
 
     /*--------------------------
         Select

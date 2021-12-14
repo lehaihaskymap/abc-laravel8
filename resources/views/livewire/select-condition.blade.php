@@ -13,7 +13,7 @@
         @endforeach
       </ul>
     </div>
-    <div class="sidebar__item">
+    <div class="sidebar__item" wire:ignore>
       <h4>Price</h4>
       <div class="price-range-wrap">
         <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" data-min="{{$pMin}}"
@@ -24,13 +24,12 @@
         </div>
         <div class="range-slider">
           <div class="price-input">
-            <input type="text" id="minamount" wire:model="priceMin">
-            <input type="text" id="maxamount" wire:model="priceMax">
+            <input type="text" id="minamount" class="number-separator">
+            <input type="text" id="maxamount" class="number-separator">
           </div>
         </div>
       </div>
     </div>
-    {{$priceMin}}, {{$priceMax}}
     <div class="sidebar__item sidebar__item__color--option">
       <h4>Colors</h4>
       <div class="sidebar__item__color sidebar__item__color--white">
@@ -102,3 +101,11 @@
 </div>
 
 
+@push('scripts')
+<script type="text/javascript">
+    function update_price(minPrice, maxPrice){
+        // alert(minPrice);
+        @this.call('updatePrice', minPrice, maxPrice);
+    }
+</script>
+@endpush

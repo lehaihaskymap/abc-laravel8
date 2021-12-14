@@ -4,17 +4,31 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Nhomsanpham;
+use App\Models\Sanpham;
 
 class SelectCondition extends Component
 {
     public $selectionCatid=null;
-    public $pMin=100;
-    Public $pMax=1000;
-    public $priceMin=100;
-    Public $priceMax=1000;
 
-    public function priceChanged(){
-        dump("tt");
+    public $pMin;
+    public $pMax;
+    public $minPrice;
+    public $maxPrice;
+
+    public function mount(){
+
+        $this->pMin=intval(Sanpham::min('gia'));
+        $this->pMax=intval(Sanpham::max('gia'));
+        $this->minPrice=$this->pMin;
+        $this->maxPrice=$this->pMax;
+        $this->emit('updateSelection', $this->selectionCatid, $this->minPrice, $this->maxPrice);
+    }
+
+    public function updatePrice($minPrice, $maxPrice){
+        $this->minPrice = $minPrice;
+        $this->maxPrice = $maxPrice;
+
+        $this->emit('updateSelection', $this->selectionCatid, $this->minPrice, $this->maxPrice);
     }
 
     public function selectCategory($catid){
@@ -24,7 +38,7 @@ class SelectCondition extends Component
             $this->selectionCatid=$catid;
         }
 
-        $this->emit('updateSelection', $this->selectionCatid);
+        $this->emit('updateSelection', $this->selectionCatid, $this->minPrice, $this->maxPrice);
     }
 
     public function render()

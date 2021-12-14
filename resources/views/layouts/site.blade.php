@@ -246,11 +246,16 @@
     <script src="{{url('site')}}/js/jquery.slicknav.js"></script>
     <script src="{{url('site')}}/js/mixitup.min.js"></script>
     <script src="{{url('site')}}/js/owl.carousel.min.js"></script>
+
+    <script src="{{url('site')}}/js/easy-number-separator.js"></script>
+
     <script src="{{url('site')}}/js/main.js"></script>
     @livewireScripts
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
     <!-- The "defer" attribute is important to make sure Alpine waits for Livewire to load first. -->
+
+
 
     @stack('scripts')
 </body>

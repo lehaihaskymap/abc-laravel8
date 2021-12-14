@@ -20,12 +20,24 @@ class ProductShopping extends Component
         1 => 'Giá tăng dần',
         2 => 'Giá giảm dần',
     ];
-    public $sortid=0;
-    public $viewType='grid';
-    public $selectionCatid=null;
 
-    public function updateSelection($catid){
+    public $sortid=0;
+
+    public $viewType='grid';
+
+    public $selectionCatid=null;
+    public $minPrice;
+    public $maxPrice;
+
+    public function mount(){
+        $this->minPrice=Sanpham::min('gia');
+        $this->maxPrice=Sanpham::max('gia');
+    }
+
+    public function updateSelection($catid, $minPrice, $maxPrice){
         $this->selectionCatid=$catid;
+        $this->minPrice=$minPrice;
+        $this->maxPrice=$maxPrice;
         $this->resetPage();
     }
 
@@ -53,22 +65,38 @@ class ProductShopping extends Component
     {
         if (!is_null($this->selectionCatid)){
             if ($this->sortid == 1){
-                $products=Sanpham::where('nhomsanphamid',$this->selectionCatid)->orderBy('gia', 'asc')->paginate(6);
+                $products=Sanpham::where('nhomsanphamid',$this->selectionCatid)
+                    ->where('gia','>=', $this->minPrice)
+                    ->where('gia','<=', $this->maxPrice)
+                    ->orderBy('gia', 'asc')->paginate(6);
             } elseif ($this->sortid ==2){
-                $products=Sanpham::where('nhomsanphamid',$this->selectionCatid)->orderBy('gia', 'desc')->paginate(6);
+                $products=Sanpham::where('nhomsanphamid',$this->selectionCatid)
+                ->where('gia','>=', $this->minPrice)
+                ->where('gia','<=', $this->maxPrice)
+                ->orderBy('gia', 'desc')->paginate(6);
             } else {
-                $products=Sanpham::where('nhomsanphamid',$this->selectionCatid)->paginate(6);
+                $products=Sanpham::where('nhomsanphamid',$this->selectionCatid)
+                ->where('gia','>=', $this->minPrice)
+                ->where('gia','<=', $this->maxPrice)
+                ->paginate(6);
             }
         }
         else{
             if ($this->sortid == 1){
-                $products=Sanpham::orderBy('gia', 'asc')->paginate(6);
+                $products=Sanpham::where('gia','>=', $this->minPrice)
+                ->where('gia','<=', $this->maxPrice)
+                ->orderBy('gia', 'asc')->paginate(6);
             } elseif ($this->sortid ==2){
-                $products=Sanpham::orderBy('gia', 'desc')->paginate(6);
+                $products=Sanpham::where('gia','>=', $this->minPrice)
+                ->where('gia','<=', $this->maxPrice)
+                ->orderBy('gia', 'desc')->paginate(6);
             } else {
-                $products=Sanpham::paginate(6);
+                $products=Sanpham::where('gia','>=', $this->minPrice)
+                ->where('gia','<=', $this->maxPrice)
+                ->paginate(6);
             }
         }
+
 
         return view('livewire.product-shopping', ['products'=>$products]);
     }

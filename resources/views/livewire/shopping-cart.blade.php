@@ -22,7 +22,7 @@
                 <tr>
                   <td class="shoping__cart__item">
                     <img src="{{url('thumbs')}}/{{App\Models\Sanpham::find($item->id)->anh}}" alt="">
-                    <h5>{{$item->name}}}</h5>
+                    <h5>{{$item->name}}</h5>
                   </td>
                   <td class="shoping__cart__price">
                     {{number_format($item->price,0)}}
