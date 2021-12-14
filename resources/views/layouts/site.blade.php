@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="{{url('site')}}/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="{{url('site')}}/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="{{url('site')}}/css/style.css" type="text/css">
+
+    <!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> -->
+
     @livewireStyles
 </head>
 
@@ -238,6 +241,7 @@
     <script src="{{url('site')}}/js/jquery-3.3.1.min.js"></script>
     <script src="{{url('site')}}/js/bootstrap.min.js"></script>
     <script src="{{url('site')}}/js/jquery.nice-select.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> -->
     <script src="{{url('site')}}/js/jquery-ui.min.js"></script>
     <script src="{{url('site')}}/js/jquery.slicknav.js"></script>
     <script src="{{url('site')}}/js/mixitup.min.js"></script>
@@ -245,7 +249,10 @@
     <script src="{{url('site')}}/js/main.js"></script>
     @livewireScripts
 
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
+    <!-- The "defer" attribute is important to make sure Alpine waits for Livewire to load first. -->
 
+    @stack('scripts')
 </body>
 
 </html>

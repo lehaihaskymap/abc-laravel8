@@ -33,6 +33,7 @@ class ShoppingCart extends Component
         $this->emitTo('cart-counter', 'postCartProcessed');
 
         $items=Cart::content();
+
         return view('livewire.shopping-cart', compact('items'));
     }
 }

@@ -3,28 +3,34 @@
     <div class="sidebar__item">
       <h4>Nhóm sản phẩm</h4>
       <ul>
-          @foreach ($categories as $category )
-            <li><a href="#">{{$category->ten}}</a></li>
+        @foreach ($categories as $category )
+            <li><a href="#" wire:click.prevent="selectCategory({{$category->id}})">{{$category->ten}}
+                @if($category->id==$this->selectionCatid)
+                    <span>***</span>
+                @endif
+                </a>
+            </li>
         @endforeach
       </ul>
     </div>
     <div class="sidebar__item">
       <h4>Price</h4>
       <div class="price-range-wrap">
-        <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" data-min="10"
-          data-max="540">
+        <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" data-min="{{$pMin}}"
+          data-max="{{$pMax}}">
           <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
           <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
           <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
         </div>
         <div class="range-slider">
           <div class="price-input">
-            <input type="text" id="minamount">
-            <input type="text" id="maxamount">
+            <input type="text" id="minamount" wire:model="priceMin">
+            <input type="text" id="maxamount" wire:model="priceMax">
           </div>
         </div>
       </div>
     </div>
+    {{$priceMin}}, {{$priceMax}}
     <div class="sidebar__item sidebar__item__color--option">
       <h4>Colors</h4>
       <div class="sidebar__item__color sidebar__item__color--white">
@@ -94,3 +100,5 @@
     @livewire('latest-product')
   </div>
 </div>
+
+

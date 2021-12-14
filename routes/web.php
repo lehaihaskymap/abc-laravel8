@@ -7,6 +7,8 @@ use App\Http\Controllers\UserManagementController;
 use App\Http\Middleware\CheckAdminLogin;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Livewire\TestComponent;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
